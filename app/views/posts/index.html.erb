@@ -1,0 +1,16 @@
+<h1>All posts</h1>
+<div>
+  <% @posts.each do |post|%>
+    <div>
+      <p><%= post.title %></p>
+      <p><%= post.body %></p>
+      <p><%= post.user.username %></p>
+    </div><br />
+  <% end %>
+  <% if user_signed_in? %>
+    <%=link_to "new post", new_posts_path %>
+    <%=button_to "Sign Out", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%=link_to "Sign in to post", new_user_session_path %>
+  <% end %>
+</div>
